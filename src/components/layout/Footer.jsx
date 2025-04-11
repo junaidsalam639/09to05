@@ -5,7 +5,7 @@ import { Button } from "../ui/Button"
 
 export default function Footer() {
     return (
-        <footer className="bg-gray-900 dark:bg-gray-950 text-white pt-16 pb-8">
+        <footer className="bg-gray-900 dark:dark:bg-[#252322] text-white pt-16 pb-8">
             <div className="container mx-auto md:px-28 px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                     <div>
@@ -99,7 +99,7 @@ export default function Footer() {
                 </div>
 
                 <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
-                    <p>Copyright © 2023 Anyanwu.com - All Rights Reserved.</p>
+                    <p>Copyright © 2025 Anyanwu.com - All Rights Reserved.</p>
                 </div>
             </div>
         </footer>

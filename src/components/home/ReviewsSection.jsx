@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import { Quote } from "lucide-react"
 import { motion } from "framer-motion"
-import { Button } from "../ui/Button"
 
 const reviews = [
   {
@@ -41,22 +40,26 @@ export default function ReviewsSection() {
   return (
     <section className="relative">
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="bg-gray-900 h-full relative overflow-hidden">
-          <img src="/assets/images/img-left-review.jpg" alt="Food wrap" className="object-cover h-full w-full" />
+        <div className="relative overflow-hidden h-64 sm:h-80 md:h-full">
+          <img
+            src="/assets/images/review.png"
+            alt="Food wrap"
+            className="object-cover w-full h-full"
+          />
         </div>
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-gray-100 p-8 md:p-12 lg:p-16 flex flex-col justify-center"
+          className="bg-gray-100 p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-center"
         >
           <div className="max-w-md">
-            <h2 className="text-3xl font-light mb-2">Client</h2>
-            <h3 className="text-5xl font-bold text-red-500 mb-8">Reviews</h3>
+            <h2 className="text-2xl sm:text-3xl font-light mb-2">Client</h2>
+            <h3 className="text-4xl sm:text-5xl font-bold text-red-500 mb-6 sm:mb-8">Reviews</h3>
 
-            <div className="relative h-64">
-              {reviews.map((review, index) => (
+            <div className="relative min-h-[240px] sm:min-h-[280px] md:min-h-[300px] lg:min-h-[320px]">
+              {reviews?.map((review, index) => (
                 <motion.div
                   key={review.id}
                   initial={{ opacity: 0 }}
@@ -65,35 +68,27 @@ export default function ReviewsSection() {
                     x: index === currentReviewIndex ? 0 : 30,
                   }}
                   transition={{ duration: 0.5 }}
-                  className={`absolute top-0 left-0 w-full ${
-                    index === currentReviewIndex ? "" : "pointer-events-none"
-                  }`}
+                  className={`absolute top-0 left-0 w-full transition-opacity duration-500 ${index === currentReviewIndex ? "" : "pointer-events-none"
+                    }`}
                 >
-                  <Quote className="w-12 h-12 text-red-500 mb-4" />
-                  <p className="text-gray-600 mb-6">{review.text}</p>
+                  <div className="bg-red-500 md:block hidden absolute -left-10 lg:-left-20 p-2 rounded-tr-lg rounded-br-lg">
+                    <Quote className="w-6 sm:w-8 h-6 sm:h-8 text-white" />
+                  </div>
+                  <p className="text-gray-600 mb-6 mt-6">{review.text}</p>
                   <div>
-                    <h4 className="text-xl font-bold text-red-500">{review.name}</h4>
+                    <h4 className="text-lg sm:text-xl font-bold text-red-500">{review.name}</h4>
                     <p className="text-gray-500 text-sm">{review.position}</p>
-                    <div className="flex mt-2">
-                      {[...Array(5)].map((_, i) => (
+                    <div className="flex mt-3">
+                      {reviews.map((_, dotIndex) => (
                         <div
-                          key={i}
-                          className={`w-2 h-2 rounded-full mr-1 ${i < review.rating ? "bg-red-500" : "bg-gray-300"}`}
+                          key={dotIndex}
+                          onClick={() => setCurrentReviewIndex(dotIndex)}
+                          className={`cursor-pointer w-2 h-2 sm:w-3 sm:h-3 rounded-full mr-2 ${dotIndex === currentReviewIndex ? "bg-red-500" : "bg-gray-300"}`}
                         />
                       ))}
                     </div>
                   </div>
                 </motion.div>
-              ))}
-            </div>
-
-            <div className="flex mt-8">
-              {reviews.map((_, index) => (
-                <Button
-                  key={index}
-                  onClick={() => setCurrentReviewIndex(index)}
-                  className={`w-3 h-3 rounded-full mr-2 ${index === currentReviewIndex ? "bg-red-500" : "bg-gray-300"}`}
-                />
               ))}
             </div>
           </div>

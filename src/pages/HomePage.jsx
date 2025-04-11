@@ -10,8 +10,14 @@ export default function HomePage() {
         <>
             <main className="min-h-screen overflow-x-hidden">
                 <Layout>
-                    <HeroSection />
-                    <StorySection />
+                    <div
+                        className='w-full bg-center bg-no-repeat bg-cover'
+                        style={{
+                            backgroundImage: "url(/assets/images/bg-light.png)",
+                        }}>
+                        <HeroSection />
+                        <StorySection />
+                    </div>
                     <MenuSection />
                     <ReviewsSection />
                 </Layout>

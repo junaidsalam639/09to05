@@ -66,3 +66,23 @@
         text-wrap: balance;
     }
 }
+
+.custom-shape-divider-top-1744368229 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1744368229 svg {
+    position: relative;
+    display: block;
+    width: calc(283% + 1.3px);
+    height: 177px;
+}
+
+.custom-shape-divider-top-1744368229 .shape-fill {
+    fill: #FFFFFF;
+}
